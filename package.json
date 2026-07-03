@@ -1,0 +1,19 @@
+{
+  "name": "ai-pr-reviewer",
+  "version": "1.0.0",
+  "description": "GitHub App that automatically reviews pull requests using LangChain + OpenAI",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "@langchain/openai": "^0.3.0",
+    "@octokit/rest": "^21.0.0",
+    "@octokit/webhooks": "^13.0.0",
+    "dotenv": "^16.4.0",
+    "express": "^4.19.0",
+    "smee-client": "^2.0.0"
+  }
+}
