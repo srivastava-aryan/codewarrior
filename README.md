@@ -2,7 +2,7 @@
 
 A GitHub App that automatically reviews pull requests using LangChain and Google Gemini. When a PR is opened or updated, the app fetches the diff, analyzes each changed file with an LLM, and posts a structured review comment — issues, suggestions, and a merge verdict.
 
-**[Live Demo](#)** · **[GitHub App Install](#)**
+**[Live Demo](https://code-my-war.onrender.com)** · **[GitHub App Install](https://github.com/srivastava-aryan/apps/code-my-war)**
 
 ---
 
