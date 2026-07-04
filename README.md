@@ -1,6 +1,6 @@
 # 🤖 AI PR Reviewer
 
-A GitHub App that automatically reviews pull requests using LangChain and OpenAI. When a PR is opened or updated, the app fetches the diff, analyzes each changed file with an LLM, and posts a structured review comment — issues, suggestions, and a merge verdict.
+A GitHub App that automatically reviews pull requests using LangChain and Google Gemini. When a PR is opened or updated, the app fetches the diff, analyzes each changed file with an LLM, and posts a structured review comment — issues, suggestions, and a merge verdict.
 
 **[Live Demo](#)** · **[GitHub App Install](#)**
 
@@ -72,9 +72,9 @@ addressing before merging.
 | Runtime | Node.js (ESM) |
 | Web server | Express |
 | GitHub API | Octokit REST |
-| AI pipeline | LangChain + OpenAI |
+| AI pipeline | LangChain + Google Gemini |
 | Dev tunnel | smee.io |
-| Deployment | Railway / Fly.io |
+| Deployment | Render / Fly.io |
 
 ---
 
@@ -112,8 +112,8 @@ Fill in:
 GITHUB_APP_ID=123456
 GITHUB_WEBHOOK_SECRET=your_webhook_secret
 GITHUB_PRIVATE_KEY_PATH=./private-key.pem   # move your .pem here
-OPENAI_API_KEY=sk-...
-OPENAI_MODEL=gpt-4o-mini
+GEMINI_API_KEY=sk-...
+GEMINI_MODEL=gpt-4o-mini
 PORT=3000
 WEBHOOK_PROXY_URL=https://smee.io/abc123    # for local dev only
 ```
@@ -137,38 +137,6 @@ npm run dev
 Open a PR on any repo the app is installed on. You should see the review comment appear within ~15 seconds.
 
 ---
-
-## Deployment (Railway)
-
-Railway is the fastest path to a production deploy:
-
-```bash
-# Install Railway CLI
-npm install -g @railway/cli
-
-# Login and init
-railway login
-railway init
-
-# Set environment variables
-railway variables set GITHUB_APP_ID=...
-railway variables set GITHUB_WEBHOOK_SECRET=...
-railway variables set OPENAI_API_KEY=...
-railway variables set OPENAI_MODEL=gpt-4o-mini
-
-# For the private key — paste the contents (not the path) as an env var
-railway variables set GITHUB_PRIVATE_KEY="$(cat private-key.pem)"
-```
-
-Then update `src/index.js` to support `GITHUB_PRIVATE_KEY` as an env var alongside the file path:
-
-```js
-const privateKey = process.env.GITHUB_PRIVATE_KEY ||
-  fs.readFileSync(process.env.GITHUB_PRIVATE_KEY_PATH, "utf8");
-```
-
-After deploy, update your GitHub App's webhook URL to the Railway URL.
-
 ---
 
 ## Technical Decisions
