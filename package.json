@@ -9,7 +9,8 @@
     "dev": "node --watch src/index.js"
   },
   "dependencies": {
-    "@langchain/openai": "^0.3.0",
+    "@langchain/core": "^1.2.1",
+    "@langchain/google": "^0.2.1",
     "@octokit/auth-app": "^8.2.0",
     "@octokit/rest": "^21.0.0",
     "@octokit/webhooks": "^13.0.0",

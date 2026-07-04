@@ -107,7 +107,7 @@ app.listen(PORT, async () => {
   console.log(`   Webhook endpoint: http://localhost:${PORT}/webhook`);
 
   // Validate required env vars on startup
-  const required = ["GITHUB_APP_ID", "GITHUB_WEBHOOK_SECRET", "GITHUB_PRIVATE_KEY_PATH", "OPENAI_API_KEY"];
+  const required = ["GITHUB_APP_ID", "GITHUB_WEBHOOK_SECRET", "GITHUB_PRIVATE_KEY_PATH", "GOOGLE_GEN_AI_API_KEY"];
   const missing = required.filter((k) => !process.env[k]);
   if (missing.length > 0) {
     console.warn(`\n⚠️  Missing environment variables: ${missing.join(", ")}`);
