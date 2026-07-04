@@ -11,7 +11,9 @@ import fs from "fs";
  * Octokit's createAppAuth handles both steps automatically.
  */
 export function getInstallationOctokit(installationId) {
-  const privateKey = fs.readFileSync(process.env.GITHUB_PRIVATE_KEY_PATH, "utf8");
+  const privateKey =
+    process.env.GITHUB_PRIVATE_KEY ||
+    fs.readFileSync(process.env.GITHUB_PRIVATE_KEY_PATH, "utf8");
 
   return new Octokit({
     authStrategy: createAppAuth,
