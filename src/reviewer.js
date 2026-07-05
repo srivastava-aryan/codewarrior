@@ -88,7 +88,7 @@ Individual file reviews:
 
 function getLLM() {
   return new ChatGoogle({
-    model: process.env.GOOGLE_GEN_AI_MODEL || "gemini-2.5-flash",
+    model: process.env.GOOGLE_GEN_AI_MODEL || "gemini-3.1-flash-lite",
     apiKey: process.env.GOOGLE_GEN_AI_API_KEY,
     temperature: 0.2, // low temp = consistent, factual reviews
     maxTokens: 1500,
